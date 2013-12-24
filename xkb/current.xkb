@@ -1537,14 +1537,9 @@ xkb_symbols "symlabel" {
     modifier_map Shift { <RTSH> };
     modifier_map Mod1 { <LALT> };
     modifier_map Mod2 { <NMLK> };
-    modifier_map Mod5 { <LVL3> };
-    modifier_map Control { <RCTL> };
     modifier_map Mod4 { <LWIN> };
-    modifier_map Mod4 { <RWIN> };
     modifier_map Mod5 { <MDSW> };
-    modifier_map Mod4 { <META> };
-    modifier_map Mod4 { <SUPR> };
-    modifier_map Mod4 { <HYPR> };
+    modifier_map Control { <RCTL> };
 };
 
 };
