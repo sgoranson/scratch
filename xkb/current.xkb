@@ -320,7 +320,7 @@ xkb_compatibility "complete" {
         action= SetMods(modifiers=Shift);
     };
     interpret Alt_L {
-        action= SetMods(modifiers=Alt);
+        action= SetMods(modifiers=Mod1);
     };
     interpret Meta_L {
         action= SetMods(modifiers=Mod3);
@@ -449,6 +449,31 @@ xkb_symbols "symlabel" {
 
     name[group1]="spggroup";
 
+    key <AB11> {         [         x       ] };
+    key <JPCM> {         [         x       ] };
+    key <I120> {         [         x       ] };
+    key <AE13> {         [         x       ] };
+    key <I149> {         [         x       ] };
+    key <I154>  {         [         x       ] };
+    key <I161>  {         [         x       ] };
+    key <I168>  {         [         x       ] };
+    key <I178>  {         [         x       ] };
+    key <I183>  {         [         x       ] };
+    key <I184>  {         [         x       ] };
+    key <FK19>  {         [         x       ] };
+    key <FK24>  {         [         x       ] };
+    key <I217>  {         [         x       ] };
+    key <I219>  {         [         x       ] };
+    key <I221>  {         [         x       ] };
+    key <I222>  {         [         x       ] };
+    key <I230>  {         [         x       ] };
+    key <I247>  {         [         x       ] };
+    key <I248>  {         [         x       ] };
+    key <I249>  {         [         x       ] };
+    key <I250>  {         [         x       ] };
+    key <I251>  {         [         x       ] };
+    key <I252>  {         [         x       ] };
+    key <I253>  {         [         x       ] };
     key <LFSH> {         [         Shift_L ] };
     key <LCTL> {         [       Control_L ] };
     key <LALT> {         [          Meta_L ] };
