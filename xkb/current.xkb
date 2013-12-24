@@ -363,32 +363,18 @@ xkb_compatibility "complete" {
     interpret.useModMapMods= AnyLevel;
     interpret.repeat= False;
     interpret.locking= False;
-    interpret ISO_Level2_Latch+Exactly(Shift) {
-        useModMapMods=level1;
-        action= LatchMods(modifiers=Shift,clearLocks,latchToLock);
+    interpret Alt_L {
+        action= SetMods(modifiers=Mod3);
     };
-    interpret Shift_Lock+AnyOf(Shift+Lock) {
-        action= LockMods(modifiers=Shift);
+    interpret Alt_R {
+        action= SetMods(modifiers=Mod5);
+    };
+    interpret Shift_L {
+        action= SetMods(modifiers=Shift);
     };
     interpret Num_Lock+AnyOf(all) {
         virtualModifier= NumLock;
         action= LockMods(modifiers=NumLock);
-    };
-    interpret ISO_Lock+AnyOf(all) {
-        action= ISOLock(modifiers=modMapMods,affect=all);
-    };
-    interpret ISO_Level3_Shift+AnyOf(all) {
-        virtualModifier= LevelThree;
-        useModMapMods=level1;
-        action= SetMods(modifiers=LevelThree,clearLocks);
-    };
-    interpret Alt_L+AnyOf(all) {
-        virtualModifier= Alt;
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Alt_R+AnyOf(all) {
-        virtualModifier= Alt;
-        action= SetMods(modifiers=modMapMods,clearLocks);
     };
     interpret Pointer_Button_Dflt {
         action= PtrBtn(button=default);
@@ -440,15 +426,6 @@ xkb_compatibility "complete" {
     };
     interpret Terminate_Server {
         action= Terminate();
-    };
-    interpret Alt_L {
-        action= SetMods(modifiers=Alt,clearLocks);
-    };
-    interpret Alt_R {
-        action= SetMods(modifiers=Alt,clearLocks);
-    };
-    interpret Shift_L {
-        action= SetMods(modifiers=Shift,clearLocks);
     };
     interpret XF86Switch_VT_1 {
         repeat= True;
@@ -513,24 +490,6 @@ xkb_compatibility "complete" {
     interpret XF86Prev_VMode {
         repeat= True;
         action= Private(type=0x86,data[0]=0x2d,data[1]=0x56,data[2]=0x4d,data[3]=0x6f,data[4]=0x64,data[5]=0x65,data[6]=0x00);
-    };
-    interpret Caps_Lock {
-        action= LockMods(modifiers=Lock);
-    };
-    interpret Any+Exactly(Lock) {
-        action= LockMods(modifiers=Lock);
-    };
-    interpret Any+AnyOf(all) {
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    indicator "Caps Lock" {
-        !allowExplicit;
-        whichModState= locked;
-        modifiers= Lock;
-    };
-    indicator "Mouse Keys" {
-        indicatorDrivesKeyboard;
-        controls= mouseKeys;
     };
 };
 
