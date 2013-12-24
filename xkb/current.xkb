@@ -1,5 +1,5 @@
 xkb_keymap {
-xkb_keycodes "kclabel" {
+xkb_keycodes "keycodelabel" {
     minimum = 8;
     maximum = 255;
      <ESC> = 9;
@@ -260,17 +260,54 @@ xkb_keycodes "kclabel" {
     virtual indicator 12 = "Shift Lock";
     virtual indicator 13 = "Group 2";
     virtual indicator 14 = "Mouse Keys";
+    alias <AC12> = <BKSL>;
+    alias <MENU> = <COMP>;
+    alias <HZTG> = <TLDE>;
+    alias <LMTA> = <LWIN>;
+    alias <RMTA> = <RWIN>;
+    alias <ALGR> = <RALT>;
+    alias <KPPT> = <I129>;
+    alias <LatQ> = <AD01>;
+    alias <LatW> = <AD02>;
+    alias <LatE> = <AD03>;
+    alias <LatR> = <AD04>;
+    alias <LatT> = <AD05>;
+    alias <LatY> = <AD06>;
+    alias <LatU> = <AD07>;
+    alias <LatI> = <AD08>;
+    alias <LatO> = <AD09>;
+    alias <LatP> = <AD10>;
+    alias <LatA> = <AC01>;
+    alias <LatS> = <AC02>;
+    alias <LatD> = <AC03>;
+    alias <LatF> = <AC04>;
+    alias <LatG> = <AC05>;
+    alias <LatH> = <AC06>;
+    alias <LatJ> = <AC07>;
+    alias <LatK> = <AC08>;
+    alias <LatL> = <AC09>;
+    alias <LatZ> = <AB01>;
+    alias <LatX> = <AB02>;
+    alias <LatC> = <AB03>;
+    alias <LatV> = <AB04>;
+    alias <LatB> = <AB05>;
+    alias <LatN> = <AB06>;
+    alias <LatM> = <AB07>;
 };
 
-xkb_types "typeslabel" {
+xkb_types "complete" {
 
-    type "LVL2" {
+    type "ONE_LEVEL" {
+        modifiers= None;
+        level_name[Level1]= "Base";
+    };
+    type "TWO_LEVEL" {
         modifiers= Shift;
         map[Shift]= Level2;
         level_name[Level1]= "Base";
         level_name[Level2]= "Shift";
     };
-    type "LVL3" {
+    type "THREE_LEVEL" {
         modifiers= Mod3+Mod5;
         map[Mod3]= Level2;
         map[Mod3+Mod5]= Level3;
@@ -278,7 +315,7 @@ xkb_types "typeslabel" {
         level_name[Level2]= "Shift";
         level_name[Level3]= "Alt L";
     };
-    type "LVL4" {
+    type "FOUR_LEVEL" {
         modifiers= Shift+Mod3;
         map[Shift]= Level2;
         map[Mod3]= Level3;
@@ -288,7 +325,7 @@ xkb_types "typeslabel" {
         level_name[Level3]= "Alt L";
         level_name[Level4]= "Shift Alt L";
     };
-    type "LVL8" {
+    type "EIGHT_LEVEL" {
         modifiers= Shift+Mod3+Mod5;
         map[Shift]= Level2;
         map[Mod3]= Level3;
@@ -306,6 +343,20 @@ xkb_types "typeslabel" {
         level_name[Level7]= "Meta L Alt R";
         level_name[Level8]= "Shift Alt L Alt R";
     };
+    type "ALPHABETIC" {
+        modifiers= Shift+Lock;
+        map[Shift]= Level2;
+        map[Lock]= Level2;
+        level_name[Level1]= "Base";
+        level_name[Level2]= "Caps";
+    };
+    type "KEYPAD" {
+        modifiers= Shift+Lock;
+        map[Shift]= Level2;
+        map[Lock]= Level2;
+        level_name[Level1]= "Base";
+        level_name[Level2]= "Number";
+    };
 };
 
 xkb_compatibility "complete" {
@@ -313,167 +364,141 @@ xkb_compatibility "complete" {
     interpret.useModMapMods= AnyLevel;
     interpret.repeat= False;
     interpret.locking= False;
-    interpret Control_L {
+    interpret Control_L+AnyOfOrNone(all) {
         action= SetMods(modifiers=Control);
     };
-    interpret Shift_L {
+    interpret Shift_L+AnyOfOrNone(all) {
         action= SetMods(modifiers=Shift);
     };
-    interpret Alt_L {
+    interpret Alt_L+AnyOfOrNone(all) {
         action= SetMods(modifiers=Mod1);
     };
-    interpret Meta_L {
+    interpret Meta_L+AnyOfOrNone(all) {
         action= SetMods(modifiers=Mod3);
     };
-    interpret Alt_R {
+    interpret Alt_R+AnyOfOrNone(all) {
         action= SetMods(modifiers=Mod5);
     };
-    interpret Pointer_Button_Dflt {
+    interpret Pointer_Button_Dflt+AnyOfOrNone(all) {
         action= PtrBtn(button=default);
     };
-    interpret Pointer_Button1 {
+    interpret Pointer_Button1+AnyOfOrNone(all) {
         action= PtrBtn(button=1);
     };
-    interpret Pointer_Button2 {
+    interpret Pointer_Button2+AnyOfOrNone(all) {
         action= PtrBtn(button=2);
     };
-    interpret Pointer_Button3 {
+    interpret Pointer_Button3+AnyOfOrNone(all) {
         action= PtrBtn(button=3);
     };
-    interpret Pointer_DblClick_Dflt {
+    interpret Pointer_DblClick_Dflt+AnyOfOrNone(all) {
         action= PtrBtn(button=default,count=2);
     };
-    interpret Pointer_DblClick1 {
+    interpret Pointer_DblClick1+AnyOfOrNone(all) {
         action= PtrBtn(button=1,count=2);
     };
-    interpret Pointer_DblClick2 {
+    interpret Pointer_DblClick2+AnyOfOrNone(all) {
         action= PtrBtn(button=2,count=2);
     };
-    interpret Pointer_DblClick3 {
+    interpret Pointer_DblClick3+AnyOfOrNone(all) {
         action= PtrBtn(button=3,count=2);
     };
-    interpret Pointer_Drag_Dflt {
+    interpret Pointer_Drag_Dflt+AnyOfOrNone(all) {
         action= LockPtrBtn(button=default,affect=both);
     };
-    interpret Pointer_Drag1 {
+    interpret Pointer_Drag1+AnyOfOrNone(all) {
         action= LockPtrBtn(button=1,affect=both);
     };
-    interpret Pointer_Drag2 {
+    interpret Pointer_Drag2+AnyOfOrNone(all) {
         action= LockPtrBtn(button=2,affect=both);
     };
-    interpret Pointer_Drag3 {
+    interpret Pointer_Drag3+AnyOfOrNone(all) {
         action= LockPtrBtn(button=3,affect=both);
     };
-    interpret Pointer_EnableKeys {
+    interpret Pointer_EnableKeys+AnyOfOrNone(all) {
         action= LockControls(controls=MouseKeys);
     };
-    interpret Pointer_Accelerate {
+    interpret Pointer_Accelerate+AnyOfOrNone(all) {
         action= LockControls(controls=MouseKeysAccel);
     };
-    interpret Pointer_DfltBtnNext {
+    interpret Pointer_DfltBtnNext+AnyOfOrNone(all) {
         action= SetPtrDflt(affect=button,button=+1);
     };
-    interpret Pointer_DfltBtnPrev {
+    interpret Pointer_DfltBtnPrev+AnyOfOrNone(all) {
         action= SetPtrDflt(affect=button,button=-1);
     };
-    interpret Terminate_Server {
+    interpret Terminate_Server+AnyOfOrNone(all) {
         action= Terminate();
     };
-    interpret XF86Switch_VT_1 {
+    interpret XF86Switch_VT_1+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=1,!same);
     };
-    interpret XF86Switch_VT_2 {
+    interpret XF86Switch_VT_2+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=2,!same);
     };
-    interpret XF86Switch_VT_3 {
+    interpret XF86Switch_VT_3+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=3,!same);
     };
-    interpret XF86Switch_VT_4 {
+    interpret XF86Switch_VT_4+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=4,!same);
     };
-    interpret XF86Switch_VT_5 {
+    interpret XF86Switch_VT_5+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=5,!same);
     };
-    interpret XF86Switch_VT_6 {
+    interpret XF86Switch_VT_6+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=6,!same);
     };
-    interpret XF86Switch_VT_7 {
+    interpret XF86Switch_VT_7+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=7,!same);
     };
-    interpret XF86Switch_VT_8 {
+    interpret XF86Switch_VT_8+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=8,!same);
     };
-    interpret XF86Switch_VT_9 {
+    interpret XF86Switch_VT_9+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=9,!same);
     };
-    interpret XF86Switch_VT_10 {
+    interpret XF86Switch_VT_10+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=10,!same);
     };
-    interpret XF86Switch_VT_11 {
+    interpret XF86Switch_VT_11+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=11,!same);
     };
-    interpret XF86Switch_VT_12 {
+    interpret XF86Switch_VT_12+AnyOfOrNone(all) {
         repeat= True;
         action= SwitchScreen(screen=12,!same);
     };
-    interpret XF86LogGrabInfo {
+    interpret XF86LogGrabInfo+AnyOfOrNone(all) {
         repeat= True;
         action= Private(type=0x86,data[0]=0x50,data[1]=0x72,data[2]=0x47,data[3]=0x72,data[4]=0x62,data[5]=0x73,data[6]=0x00);
     };
-    interpret XF86LogWindowTree {
+    interpret XF86LogWindowTree+AnyOfOrNone(all) {
         repeat= True;
         action= Private(type=0x86,data[0]=0x50,data[1]=0x72,data[2]=0x57,data[3]=0x69,data[4]=0x6e,data[5]=0x73,data[6]=0x00);
     };
-    interpret XF86Next_VMode {
+    interpret XF86Next_VMode+AnyOfOrNone(all) {
         repeat= True;
         action= Private(type=0x86,data[0]=0x2b,data[1]=0x56,data[2]=0x4d,data[3]=0x6f,data[4]=0x64,data[5]=0x65,data[6]=0x00);
     };
-    interpret XF86Prev_VMode {
+    interpret XF86Prev_VMode+AnyOfOrNone(all) {
         repeat= True;
         action= Private(type=0x86,data[0]=0x2d,data[1]=0x56,data[2]=0x4d,data[3]=0x6f,data[4]=0x64,data[5]=0x65,data[6]=0x00);
     };
 };
 
-xkb_symbols "symlabel" {
+xkb_symbols "symbolslabel" {
 
-    name[group1]="spggroup";
-
-    key <AB11> {         [         x       ] };
-    key <JPCM> {         [         x       ] };
-    key <I120> {         [         x       ] };
-    key <AE13> {         [         x       ] };
-    key <I149> {         [         x       ] };
-    key <I154>  {         [         x       ] };
-    key <I161>  {         [         x       ] };
-    key <I168>  {         [         x       ] };
-    key <I178>  {         [         x       ] };
-    key <I183>  {         [         x       ] };
-    key <I184>  {         [         x       ] };
-    key <FK19>  {         [         x       ] };
-    key <FK24>  {         [         x       ] };
-    key <I217>  {         [         x       ] };
-    key <I219>  {         [         x       ] };
-    key <I221>  {         [         x       ] };
-    key <I222>  {         [         x       ] };
-    key <I230>  {         [         x       ] };
-    key <I247>  {         [         x       ] };
-    key <I248>  {         [         x       ] };
-    key <I249>  {         [         x       ] };
-    key <I250>  {         [         x       ] };
-    key <I251>  {         [         x       ] };
-    key <I252>  {         [         x       ] };
-    key <I253>  {         [         x       ] };
+    name[group1]="English (US)";
     key <LFSH> {         [         Shift_L ] };
     key <LCTL> {         [       Control_L ] };
     key <LALT> {         [          Meta_L ] };
@@ -497,7 +522,6 @@ xkb_symbols "symlabel" {
     key <SPCE> {         [           space ] };
     key <NMLK> {         [        Num_Lock ] };
     key <SCLK> {         [     Scroll_Lock ] };
-
     key <I173> {         [   XF86AudioPrev ] };
     key <I171> {         [   XF86AudioNext ] };
     key <I128> {         [     XF86LaunchA ] };
@@ -609,7 +633,7 @@ xkb_symbols "symlabel" {
     key <MUHE> {         [        Muhenkan ] };
     key <KPEN> {         [        KP_Enter ] };
 
-    key.type = "LVL2";
+    key.type = "TWO_LEVEL";
     key  <KP7> {         [         KP_Home,            KP_7 ] };
     key  <KP8> {         [           KP_Up,            KP_8 ] };
     key  <KP9> {         [        KP_Prior,            KP_9 ] };
@@ -633,7 +657,7 @@ xkb_symbols "symlabel" {
     key <SUPR> {         [        NoSymbol,         Super_L ] };
     key <HYPR> {         [        NoSymbol,         Hyper_L ] };
 
-    key.type = "LVL3";
+    key.type = "THREE_LEVEL";
     key <BKSP> { [   BackSpace,    NoSymbol, Terminate_Server ] };
     key <FK01> { [          F1,          F1,  XF86Switch_VT_1 ] };
     key <FK02> { [          F2,          F2,  XF86Switch_VT_2 ] };
@@ -651,7 +675,7 @@ xkb_symbols "symlabel" {
     key <KPSU> { [ KP_Subtract, KP_Subtract,   XF86Prev_VMode ] };
     key <KPAD> { [      KP_Add,      KP_Add,   XF86Next_VMode ] };
 
-    key.type = "LVL4";
+    key.type = "FOUR_LEVEL";
     key <AE01> { [               1,          exclam,     onesuperior,      exclamdown ] };
     key <AE02> { [               2,              at,     twosuperior, dead_doubleacute ] };
     key <AE03> { [               3,      numbersign,   threesuperior,     dead_macron ] };
@@ -681,7 +705,7 @@ xkb_symbols "symlabel" {
     key <AC03> { [               d,               D,             eth,             ETH ] };
     key <AC04> { [               f,               F,               f,               F ] };
     key <AC05> { [               g,               G,               g,               G ] };
-    key <AC06> { [               h,               H,               h,               H ] };
+    key <AC10> { [       semicolon,           colon,       semicolon,           colon ] };
     key <AC11> { [      apostrophe,        quotedbl,      dead_acute,  dead_diaeresis ] };
     key <TLDE> { [           grave,      asciitilde,      dead_grave,      dead_tilde ] };
     key <BKSL> { [       backslash,             bar,         notsign,       brokenbar ] };
@@ -697,17 +721,17 @@ xkb_symbols "symlabel" {
     key <AB10> { [           slash,        question,    questiondown,       dead_hook ] };
     key <LSGT> { [            less,         greater,             bar,       brokenbar ] };
 
-    key.type="LVL8";
-    key <AC07> { [ j, J, F9, F9 ] };
-    key <AC08> { [ k, K, oe, OE ] };
-    key <AC09> { [ l, L, oslash, Oslash ] };
-    key <AC10> { [ semicolon, colon, F10, F10 ] };
-
-    modifier_map Shift { Shift_L };
+    key.type="EIGHT_LEVEL";
+    key <AC06> { [ h, H, h, F7,  h, H, h, F9 ] };
+    key <AC07> { [ j, J, j, J,  j, J, j, J ] };
+    key <AC08> { [ k, K, oe, OE,  k, K, oe, OE ] };
+    key <AC09> { [ l, L, oslash, F8,  l, L, oslash, F10 ] };
     modifier_map Control { Control_L };
+    modifier_map Shift { Shift_L };
     modifier_map Mod1 { Alt_L };
     modifier_map Mod3 { Meta_L };
     modifier_map Mod5 { Alt_R };
 };
+
 
 };
