@@ -264,52 +264,39 @@ xkb_keycodes "kclabel" {
 
 xkb_types "typeslabel" {
 
-    type "PC_ALT_LEVEL2" {
-        modifiers= Alt;
-        map[Alt]= Level2;
-        level_name[Level1]= "Base";
-        level_name[Level2]= "Alt";
-    };
-    type "CRAZY_EIGHTS" {
-        modifiers= Shift+LevelThree+LevelFive;
+    type "LVL2" {
+        modifiers= Shift;
         map[Shift]= Level2;
-        map[LevelThree]= Level3;
-        map[Shift+LevelThree]= Level4;
-        map[LevelFive]= Level5;
-        map[Shift+LevelFive]= Level6;
-        map[LevelThree+LevelFive]= Level7;
-        map[Shift+LevelThree+LevelFive]= Level8;
         level_name[Level1]= "Base";
         level_name[Level2]= "Shift";
-        level_name[Level3]= "Meta L";
-        level_name[Level4]= "Shift Meta L";
-        level_name[Level5]= "Alt Gr";
-        level_name[Level6]= "Shift Alt Gr";
-        level_name[Level7]= "Meta L Alt Gr";
-        level_name[Level8]= "Shift Meta L Alt Gr";
     };
-    type "FOUR_LEVEL" {
-        modifiers= Shift+LevelThree;
+    type "LVL4" {
+        modifiers= Shift+Mod3;
         map[Shift]= Level2;
-        map[LevelThree]= Level3;
-        map[Shift+LevelThree]= Level4;
+        map[Mod3]= Level3;
+        map[Shift+Mod3]= Level4;
         level_name[Level1]= "Base";
         level_name[Level2]= "Shift";
-        level_name[Level3]= "Alt Base";
-        level_name[Level4]= "Shift Alt";
+        level_name[Level3]= "Alt L";
+        level_name[Level4]= "Shift Alt L";
     };
-    type "FOUR_LEVEL_ALPHABETIC" {
-        modifiers= Shift+Lock+LevelThree;
+    type "LVL8" {
+        modifiers= Shift+Mod3+Mod5;
         map[Shift]= Level2;
-        map[Lock]= Level2;
-        map[LevelThree]= Level3;
-        map[Shift+LevelThree]= Level4;
-        map[Lock+LevelThree]= Level4;
-        map[Shift+Lock+LevelThree]= Level3;
+        map[Mod3]= Level3;
+        map[Shift+Mod3]= Level4;
+        map[Mod5]= Level5;
+        map[Shift+Mod5]= Level6;
+        map[Mod3+Mod5]= Level7;
+        map[Shift+Mod3+Mod5]= Level8;
         level_name[Level1]= "Base";
         level_name[Level2]= "Shift";
-        level_name[Level3]= "Alt Base";
-        level_name[Level4]= "Shift Alt";
+        level_name[Level3]= "Alt L";
+        level_name[Level4]= "Shift Alt L";
+        level_name[Level5]= "Alt R";
+        level_name[Level6]= "Shift Alt R";
+        level_name[Level7]= "Meta L Alt R";
+        level_name[Level8]= "Shift Alt L Alt R";
     };
 };
 
@@ -318,14 +305,20 @@ xkb_compatibility "complete" {
     interpret.useModMapMods= AnyLevel;
     interpret.repeat= False;
     interpret.locking= False;
+    interpret Control_L {
+        action= SetMods(modifiers=Control);
+    };
+    interpret Shift_L {
+        action= SetMods(modifiers=Shift);
+    };
     interpret Alt_L {
+        action= SetMods(modifiers=Alt);
+    };
+    interpret Meta_L {
         action= SetMods(modifiers=Mod3);
     };
     interpret Alt_R {
         action= SetMods(modifiers=Mod5);
-    };
-    interpret Shift_L {
-        action= SetMods(modifiers=Shift);
     };
     interpret Pointer_Button_Dflt {
         action= PtrBtn(button=default);
@@ -733,16 +726,10 @@ xkb_symbols "symlabel" {
     key  <KP0> {         [       KP_Insert,            KP_0 ] };
     key <KPDL> {         [       KP_Delete,      KP_Decimal ] };
     key <LVL3> {         [ ISO_Level3_Shift ] };
-    key <KPDV> {
-        type= "CTRL+ALT",
-        symbols[Group1]= [       KP_Divide,       KP_Divide,       KP_Divide,       KP_Divide,      XF86Ungrab ]
-    };
-    key <PRSC> {
-        type= "PC_ALT_LEVEL2",
-        symbols[Group1]= [           Print,         Sys_Req ]
-    };
+    key <KPDV> { [       KP_Divide,       KP_Divide,       KP_Divide,       KP_Divide ] };
+    key <PRSC> { [           Print,         Sys_Req ] };
     key <RALT> {         [           Alt_R ] };
-    key <LALT> {         [           Alt_L ] };
+    key <LALT> {         [           Meta_L ] };
     key <LNFD> {         [        Linefeed ] };
     key <HOME> {         [            Home ] };
     key   <UP> {         [              Up ] };
@@ -760,15 +747,12 @@ xkb_symbols "symlabel" {
     key <POWR> {         [    XF86PowerOff ] };
     key <KPEQ> {         [        KP_Equal ] };
     key <I126> {         [       plusminus ] };
-    key <PAUS> {
-        type= "PC_CONTROL_LEVEL2",
-        symbols[Group1]= [           Pause,           Break ]
-    };
+    key <PAUS> { [           Pause,           Break ] };
     key <I128> {         [     XF86LaunchA ] };
     key <I129> {         [      KP_Decimal,      KP_Decimal ] };
     key <HNGL> {         [          Hangul ] };
     key <HJCV> {         [    Hangul_Hanja ] };
-    key <LWIN> {         [          Meta_L ] };
+    key <LWIN> {         [          Alt_L ] };
     key <RWIN> {         [         Super_R ] };
     key <COMP> {         [            Menu ] };
     key <STOP> {         [          Cancel ] };
@@ -868,6 +852,11 @@ xkb_symbols "symlabel" {
     key <I244> {         [     XF86Battery ] };
     key <I245> {         [   XF86Bluetooth ] };
     key <I246> {         [        XF86WLAN ] };
+    modifier_map Shift { Shift_L };
+    modifier_map Control { Control_L };
+    modifier_map Mod1 { Alt_L };
+    modifier_map Mod3 { Meta_L };
+    modifier_map Mod5 { Alt_R };
 };
 
 };
