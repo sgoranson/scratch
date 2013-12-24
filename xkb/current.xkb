@@ -382,16 +382,6 @@ xkb_compatibility "complete" {
         useModMapMods=level1;
         action= SetMods(modifiers=LevelThree,clearLocks);
     };
-    interpret ISO_Level3_Latch+AnyOf(all) {
-        virtualModifier= LevelThree;
-        useModMapMods=level1;
-        action= LatchMods(modifiers=LevelThree,clearLocks,latchToLock);
-    };
-    interpret ISO_Level3_Lock+AnyOf(all) {
-        virtualModifier= LevelThree;
-        useModMapMods=level1;
-        action= LockMods(modifiers=LevelThree);
-    };
     interpret Alt_L+AnyOf(all) {
         virtualModifier= Alt;
         action= SetMods(modifiers=modMapMods,clearLocks);
@@ -399,230 +389,6 @@ xkb_compatibility "complete" {
     interpret Alt_R+AnyOf(all) {
         virtualModifier= Alt;
         action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Meta_L+AnyOf(all) {
-        virtualModifier= Meta;
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Meta_R+AnyOf(all) {
-        virtualModifier= Meta;
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Super_L+AnyOf(all) {
-        virtualModifier= Super;
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Super_R+AnyOf(all) {
-        virtualModifier= Super;
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Hyper_L+AnyOf(all) {
-        virtualModifier= Hyper;
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Hyper_R+AnyOf(all) {
-        virtualModifier= Hyper;
-        action= SetMods(modifiers=modMapMods,clearLocks);
-    };
-    interpret Scroll_Lock+AnyOf(all) {
-        virtualModifier= ScrollLock;
-        action= LockMods(modifiers=modMapMods);
-    };
-    interpret ISO_Level5_Shift+AnyOf(all) {
-        virtualModifier= LevelFive;
-        useModMapMods=level1;
-        action= SetMods(modifiers=LevelFive,clearLocks);
-    };
-    interpret ISO_Level5_Latch+AnyOf(all) {
-        virtualModifier= LevelFive;
-        action= LatchMods(modifiers=LevelFive,clearLocks,latchToLock);
-    };
-    interpret ISO_Level5_Lock+AnyOf(all) {
-        virtualModifier= LevelFive;
-        action= LockMods(modifiers=LevelFive);
-    };
-    interpret Mode_switch {
-        virtualModifier= AltGr;
-        useModMapMods=level1;
-        action= SetGroup(group=+1);
-    };
-    interpret ISO_Level3_Shift {
-        action= SetMods(modifiers=LevelThree,clearLocks);
-    };
-    interpret ISO_Level3_Latch {
-        action= LatchMods(modifiers=LevelThree,clearLocks,latchToLock);
-    };
-    interpret ISO_Level3_Lock {
-        action= LockMods(modifiers=LevelThree);
-    };
-    interpret ISO_Group_Latch {
-        virtualModifier= AltGr;
-        useModMapMods=level1;
-        action= LatchGroup(group=2);
-    };
-    interpret ISO_Next_Group {
-        virtualModifier= AltGr;
-        useModMapMods=level1;
-        action= LockGroup(group=+1);
-    };
-    interpret ISO_Prev_Group {
-        virtualModifier= AltGr;
-        useModMapMods=level1;
-        action= LockGroup(group=-1);
-    };
-    interpret ISO_First_Group {
-        action= LockGroup(group=1);
-    };
-    interpret ISO_Last_Group {
-        action= LockGroup(group=2);
-    };
-    interpret KP_1 {
-        repeat= True;
-        action= MovePtr(x=-1,y=+1);
-    };
-    interpret KP_End {
-        repeat= True;
-        action= MovePtr(x=-1,y=+1);
-    };
-    interpret KP_2 {
-        repeat= True;
-        action= MovePtr(x=+0,y=+1);
-    };
-    interpret KP_Down {
-        repeat= True;
-        action= MovePtr(x=+0,y=+1);
-    };
-    interpret KP_3 {
-        repeat= True;
-        action= MovePtr(x=+1,y=+1);
-    };
-    interpret KP_Next {
-        repeat= True;
-        action= MovePtr(x=+1,y=+1);
-    };
-    interpret KP_4 {
-        repeat= True;
-        action= MovePtr(x=-1,y=+0);
-    };
-    interpret KP_Left {
-        repeat= True;
-        action= MovePtr(x=-1,y=+0);
-    };
-    interpret KP_6 {
-        repeat= True;
-        action= MovePtr(x=+1,y=+0);
-    };
-    interpret KP_Right {
-        repeat= True;
-        action= MovePtr(x=+1,y=+0);
-    };
-    interpret KP_7 {
-        repeat= True;
-        action= MovePtr(x=-1,y=-1);
-    };
-    interpret KP_Home {
-        repeat= True;
-        action= MovePtr(x=-1,y=-1);
-    };
-    interpret KP_8 {
-        repeat= True;
-        action= MovePtr(x=+0,y=-1);
-    };
-    interpret KP_Up {
-        repeat= True;
-        action= MovePtr(x=+0,y=-1);
-    };
-    interpret KP_9 {
-        repeat= True;
-        action= MovePtr(x=+1,y=-1);
-    };
-    interpret KP_Prior {
-        repeat= True;
-        action= MovePtr(x=+1,y=-1);
-    };
-    interpret KP_5 {
-        repeat= True;
-        action= PtrBtn(button=default);
-    };
-    interpret KP_Begin {
-        repeat= True;
-        action= PtrBtn(button=default);
-    };
-    interpret KP_F2 {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=1);
-    };
-    interpret KP_Divide {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=1);
-    };
-    interpret KP_F3 {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=2);
-    };
-    interpret KP_Multiply {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=2);
-    };
-    interpret KP_F4 {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=3);
-    };
-    interpret KP_Subtract {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=3);
-    };
-    interpret KP_Separator {
-        repeat= True;
-        action= PtrBtn(button=default,count=2);
-    };
-    interpret KP_Add {
-        repeat= True;
-        action= PtrBtn(button=default,count=2);
-    };
-    interpret KP_0 {
-        repeat= True;
-        action= LockPtrBtn(button=default,affect=lock);
-    };
-    interpret KP_Insert {
-        repeat= True;
-        action= LockPtrBtn(button=default,affect=lock);
-    };
-    interpret KP_Decimal {
-        repeat= True;
-        action= LockPtrBtn(button=default,affect=unlock);
-    };
-    interpret KP_Delete {
-        repeat= True;
-        action= LockPtrBtn(button=default,affect=unlock);
-    };
-    interpret F25 {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=1);
-    };
-    interpret F26 {
-        repeat= True;
-        action= SetPtrDflt(affect=button,button=2);
-    };
-    interpret F27 {
-        repeat= True;
-        action= MovePtr(x=-1,y=-1);
-    };
-    interpret F29 {
-        repeat= True;
-        action= MovePtr(x=+1,y=-1);
-    };
-    interpret F31 {
-        repeat= True;
-        action= PtrBtn(button=default);
-    };
-    interpret F33 {
-        repeat= True;
-        action= MovePtr(x=-1,y=+1);
-    };
-    interpret F35 {
-        repeat= True;
-        action= MovePtr(x=+1,y=+1);
     };
     interpret Pointer_Button_Dflt {
         action= PtrBtn(button=default);
@@ -672,39 +438,6 @@ xkb_compatibility "complete" {
     interpret Pointer_DfltBtnPrev {
         action= SetPtrDflt(affect=button,button=-1);
     };
-    interpret AccessX_Enable {
-        action= LockControls(controls=AccessXKeys);
-    };
-    interpret AccessX_Feedback_Enable {
-        action= LockControls(controls=AccessXFeedback);
-    };
-    interpret RepeatKeys_Enable {
-        action= LockControls(controls=RepeatKeys);
-    };
-    interpret SlowKeys_Enable {
-        action= LockControls(controls=SlowKeys);
-    };
-    interpret BounceKeys_Enable {
-        action= LockControls(controls=BounceKeys);
-    };
-    interpret StickyKeys_Enable {
-        action= LockControls(controls=StickyKeys);
-    };
-    interpret MouseKeys_Enable {
-        action= LockControls(controls=MouseKeys);
-    };
-    interpret MouseKeys_Accel_Enable {
-        action= LockControls(controls=MouseKeysAccel);
-    };
-    interpret Overlay1_Enable {
-        action= LockControls(controls=Overlay1);
-    };
-    interpret Overlay2_Enable {
-        action= LockControls(controls=Overlay2);
-    };
-    interpret AudibleBell_Enable {
-        action= LockControls(controls=AudibleBell);
-    };
     interpret Terminate_Server {
         action= Terminate();
     };
@@ -713,24 +446,6 @@ xkb_compatibility "complete" {
     };
     interpret Alt_R {
         action= SetMods(modifiers=Alt,clearLocks);
-    };
-    interpret Meta_L {
-        action= SetMods(modifiers=Meta,clearLocks);
-    };
-    interpret Meta_R {
-        action= SetMods(modifiers=Meta,clearLocks);
-    };
-    interpret Super_L {
-        action= SetMods(modifiers=Super,clearLocks);
-    };
-    interpret Super_R {
-        action= SetMods(modifiers=Super,clearLocks);
-    };
-    interpret Hyper_L {
-        action= SetMods(modifiers=Hyper,clearLocks);
-    };
-    interpret Hyper_R {
-        action= SetMods(modifiers=Hyper,clearLocks);
     };
     interpret Shift_L {
         action= SetMods(modifiers=Shift,clearLocks);
@@ -799,15 +514,6 @@ xkb_compatibility "complete" {
         repeat= True;
         action= Private(type=0x86,data[0]=0x2d,data[1]=0x56,data[2]=0x4d,data[3]=0x6f,data[4]=0x64,data[5]=0x65,data[6]=0x00);
     };
-    interpret ISO_Level5_Shift {
-        action= SetMods(modifiers=LevelFive,clearLocks);
-    };
-    interpret ISO_Level5_Latch {
-        action= LatchMods(modifiers=LevelFive,clearLocks,latchToLock);
-    };
-    interpret ISO_Level5_Lock {
-        action= LockMods(modifiers=LevelFive);
-    };
     interpret Caps_Lock {
         action= LockMods(modifiers=Lock);
     };
@@ -817,31 +523,10 @@ xkb_compatibility "complete" {
     interpret Any+AnyOf(all) {
         action= SetMods(modifiers=modMapMods,clearLocks);
     };
-    group 2 = AltGr;
-    group 3 = AltGr;
-    group 4 = AltGr;
     indicator "Caps Lock" {
         !allowExplicit;
         whichModState= locked;
         modifiers= Lock;
-    };
-    indicator "Num Lock" {
-        !allowExplicit;
-        whichModState= locked;
-        modifiers= NumLock;
-    };
-    indicator "Scroll Lock" {
-        whichModState= locked;
-        modifiers= ScrollLock;
-    };
-    indicator "Shift Lock" {
-        !allowExplicit;
-        whichModState= locked;
-        modifiers= Shift;
-    };
-    indicator "Group 2" {
-        !allowExplicit;
-        groups= 0xfe;
     };
     indicator "Mouse Keys" {
         indicatorDrivesKeyboard;
