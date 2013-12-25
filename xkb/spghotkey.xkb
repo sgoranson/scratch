@@ -2,7 +2,7 @@ xkb_keymap {
 xkb_keycodes "keycodelabel" {
     minimum = 8;
     maximum = 255;
-     <ESC> = 9;
+    <ESC> = 9;
     <AE01> = 10;
     <AE02> = 11;
     <AE03> = 12;
@@ -634,12 +634,12 @@ xkb_symbols "symbolslabel" {
     key <KPEN> {         [        KP_Enter ] };
 
     key.type = "TWO_LEVEL";
+    key  <KP4> {         [         KP_Left,            KP_4 ] };
+    key  <KP6> {         [        KP_Right,            KP_6 ] };
     key  <KP7> {         [         KP_Home,            KP_7 ] };
     key  <KP8> {         [           KP_Up,            KP_8 ] };
     key  <KP9> {         [        KP_Prior,            KP_9 ] };
-    key  <KP4> {         [         KP_Left,            KP_4 ] };
     key  <KP5> {         [        KP_Begin,            KP_5 ] };
-    key  <KP6> {         [        KP_Right,            KP_6 ] };
     key  <KP1> {         [          KP_End,            KP_1 ] };
     key  <KP2> {         [         KP_Down,            KP_2 ] };
     key  <KP3> {         [         KP_Next,            KP_3 ] };
@@ -722,10 +722,10 @@ xkb_symbols "symbolslabel" {
     key <LSGT> { [            less,         greater,             bar,       brokenbar ] };
 
     key.type="EIGHT_LEVEL";
-    key <AC06> { [ h, H, h, F7,  h, H, h, F9 ] };
+    key <AC06> { [ h, H, h, F7,  h, H, h, F7 ] };
     key <AC07> { [ j, J, j, J,  j, J, j, J ] };
     key <AC08> { [ k, K, oe, OE,  k, K, oe, OE ] };
-    key <AC09> { [ l, L, oslash, F8,  l, L, oslash, F10 ] };
+    key <AC09> { [ l, L, oslash, F8,  l, L, oslash, F8 ] };
     modifier_map Control { Control_L };
     modifier_map Shift { Shift_L };
     modifier_map Mod1 { Alt_L };
